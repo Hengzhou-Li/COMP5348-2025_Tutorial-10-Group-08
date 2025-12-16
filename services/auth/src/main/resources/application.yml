@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+auth:
+  jwt:
+    issuer: "comp5348-store"
+    secret: "dev-super-secret-change-me"
+    expires-minutes: 60
+
+app:
+  cors:
+    allowed-origins:
+      - "http://localhost:5173"   # Vite
+      - "http://127.0.0.1:5173"   # 有些瀏覽器用 127.0.0.1
+spring:
+  datasource:
+    url: jdbc:h2:mem:storedb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.security: INFO
